@@ -3,6 +3,7 @@ import {withStyles} from "@material-ui/core";
 import NavBar from "./Components/NavBar/NavBar";
 import DisplayGraph from "./Components/DisplayGraph/DisplayGraph";
 import DisplayScoreData from "./Components/DisplayScoreData/DisplayScoreData";
+import DisplaySuggestion from "./Components/DisplaySuggestion/DisplaySuggestion";
 
 let styles = theme => ({
    root: {
@@ -15,9 +16,10 @@ class App extends Component {
       let {classes} = this.props;
       return (
          <div className={classes.root}>
-            <NavBar navbarTitle={'Navbar'}/>
+            <NavBar navbarTitle={'Navbar'} />
             <DisplayGraph/>
             <DisplayScoreData/>
+            <DisplaySuggestion/>
          </div>
       );
    }
