@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
 import NavBar from "./Components/NavBar/NavBar";
 import DisplayGraph from "./Components/DisplayGraph/DisplayGraph";
+import DisplayScoreData from "./Components/DisplayScoreData/DisplayScoreData";
 
 let styles = theme => ({
    root: {
@@ -16,7 +17,7 @@ class App extends Component {
          <div className={classes.root}>
             <NavBar navbarTitle={'Navbar'}/>
             <DisplayGraph/>
-            lol
+            <DisplayScoreData/>
          </div>
       );
    }
