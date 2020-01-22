@@ -83,7 +83,7 @@ class App extends Component {
       let averageScore = this.getAverage();
       return (
          <div className={classes.root}>
-            <NavBar navbarTitle={'Navbar'}/>
+            <NavBar navbarTitle={'NeetPrep'}/>
             <DisplayGraph previousData={previousData} currentData={currentData} averageScore={averageScore}/>
             <DisplayScoreData previousData={previousData} currentData={currentData} averageScore={averageScore}/>
             <DisplaySuggestion/>
