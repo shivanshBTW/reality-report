@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import classNames from 'classnames';
 import Collapse from "@material-ui/core/Collapse";
 import {makeStyles} from "@material-ui/core";
+import {ExpandLess, ExpandMore} from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
    root: {
@@ -36,9 +37,9 @@ const useStyles = makeStyles(theme => ({
 
 function DisplayScoreData(props) {
    const classes = useStyles();
-   const [currentTestScoreOpen, setCurrentTestScoreOpen] = React.useState(true);
-   const [averageTestScoreOpen, setAverageTestScoreOpen] = React.useState(true);
-   const [previousTestScoreOpen, setPreviousTestScoreOpen] = React.useState(true);
+   const [currentTestScoreOpen, setCurrentTestScoreOpen] = React.useState(false);
+   const [averageTestScoreOpen, setAverageTestScoreOpen] = React.useState(false);
+   const [previousTestScoreOpen, setPreviousTestScoreOpen] = React.useState(false);
 
    const handleCurrentTestScoreClick = () => {
       setCurrentTestScoreOpen(!currentTestScoreOpen);
@@ -56,14 +57,15 @@ function DisplayScoreData(props) {
       <Paper className={classes.root} elevation={3}>
          <div className={classes.listContainer}>
             <List>
-               <ListItem className={classes.listItem} key={2}>
+               <ListItem className={classes.listItem} button onClick={handleCurrentTestScoreClick} key={1}>
                   <ListItemText primary={"Current Score"}/>
+                  {currentTestScoreOpen ? <ExpandLess/> : <ExpandMore/>}
                </ListItem>
                <Collapse in={currentTestScoreOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                     {props.currentData.map(chapterScoreObj => {
+                     {props.currentData.map((chapterScoreObj,index) => {
                         return (
-                           <ListItem className={classNames(classes.listItem, classes.nested)} key={2}>
+                           <ListItem className={classNames(classes.listItem, classes.nested)} key={index}>
                               <ListItemText primary={`chapter ${chapterScoreObj.chapter}`}/>
                               <Typography variant="body2">{chapterScoreObj.score}</Typography>
                            </ListItem>
@@ -72,14 +74,18 @@ function DisplayScoreData(props) {
                   </List>
                </Collapse>
                <Divider/>
-               <ListItem className={classes.listItem} key={2}>
-                  <ListItemText primary={"Current Score"}/>
+
+
+
+               <ListItem className={classes.listItem} button onClick={handleAverageTestScoreClick} key={2}>
+                  <ListItemText primary={"Average Score"}/>
+                  {averageTestScoreOpen ? <ExpandLess/> : <ExpandMore/>}
                </ListItem>
                <Collapse in={averageTestScoreOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                     {props.currentData.map(chapterScoreObj => {
+                     {props.currentData.map((chapterScoreObj,index) => {
                         return (
-                           <ListItem className={classNames(classes.listItem, classes.nested)} key={2}>
+                           <ListItem className={classNames(classes.listItem, classes.nested)} key={index}>
                               <ListItemText primary={`chapter ${chapterScoreObj.chapter}`}/>
                               <Typography variant="body2">{chapterScoreObj.score}</Typography>
                            </ListItem>
@@ -88,14 +94,18 @@ function DisplayScoreData(props) {
                   </List>
                </Collapse>
                <Divider/>
-               <ListItem className={classes.listItem} button onClick={handleClick} key={2}>
-                  <ListItemText primary={"Current Score"}/>
+
+
+
+               <ListItem className={classes.listItem} button onClick={handlePreviousTestScoreClick} key={3}>
+                  <ListItemText primary={"Last Test's Score"}/>
+                  {previousTestScoreOpen ? <ExpandLess/> : <ExpandMore/>}
                </ListItem>
                <Collapse in={previousTestScoreOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                     {props.currentData.map(chapterScoreObj => {
+                     {props.currentData.map((chapterScoreObj,index) => {
                         return (
-                           <ListItem className={classNames(classes.listItem, classes.nested)} key={2}>
+                           <ListItem className={classNames(classes.listItem, classes.nested)} key={index}>
                               <ListItemText primary={`chapter ${chapterScoreObj.chapter}`}/>
                               <Typography variant="body2">{chapterScoreObj.score}</Typography>
                            </ListItem>
