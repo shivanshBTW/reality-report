@@ -4,10 +4,15 @@ import NavBar from "./Components/NavBar/NavBar";
 import DisplayGraph from "./Components/DisplayGraph/DisplayGraph";
 import DisplayScoreData from "./Components/DisplayScoreData/DisplayScoreData";
 import DisplaySuggestion from "./Components/DisplaySuggestion/DisplaySuggestion";
+import Grid from "@material-ui/core/Grid";
 
 let styles = theme => ({
    root: {
       margin: theme.spacing(0)
+      // maxWidth:theme.spacing(10)
+   },
+   container:{
+      maxWidth: theme.spacing(60)
    }
 });
 
@@ -17,22 +22,22 @@ class App extends Component {
       this.state = {
          previousData: [
             [
-               {chapter: 1, score: 40,label: "Previous Test Score"},
-               {chapter: 2, score: 57,label: "Previous Test Score"},
-               {chapter: 3, score: 83,label: "Previous Test Score"},
-               {chapter: 4, score: 91,label: "Previous Test Score"}
+               {chapter: 1, score: 40, label: "Previous Test Score"},
+               {chapter: 2, score: 57, label: "Previous Test Score"},
+               {chapter: 3, score: 83, label: "Previous Test Score"},
+               {chapter: 4, score: 91, label: "Previous Test Score"}
             ],
             [
-               {chapter: 1, score: 73,label: "Previous Test Score"},
-               {chapter: 2, score: 33,label: "Previous Test Score"},
-               {chapter: 3, score: 20,label: "Previous Test Score"},
-               {chapter: 4, score: 34,label: "Previous Test Score"}
+               {chapter: 1, score: 73, label: "Previous Test Score"},
+               {chapter: 2, score: 33, label: "Previous Test Score"},
+               {chapter: 3, score: 20, label: "Previous Test Score"},
+               {chapter: 4, score: 34, label: "Previous Test Score"}
             ],
             [
-               {chapter: 1, score: 44,label: "Previous Test Score"},
-               {chapter: 2, score: 55,label: "Previous Test Score"},
-               {chapter: 3, score: 66,label: "Previous Test Score"},
-               {chapter: 4, score: 99,label: "Previous Test Score"}
+               {chapter: 1, score: 44, label: "Previous Test Score"},
+               {chapter: 2, score: 55, label: "Previous Test Score"},
+               {chapter: 3, score: 66, label: "Previous Test Score"},
+               {chapter: 4, score: 99, label: "Previous Test Score"}
             ],
          ],
          currentData: [
@@ -84,9 +89,13 @@ class App extends Component {
       return (
          <div className={classes.root}>
             <NavBar navbarTitle={'NeetPrep'}/>
-            <DisplayGraph previousData={previousData} currentData={currentData} averageScore={averageScore}/>
-            <DisplayScoreData previousData={previousData} currentData={currentData} averageScore={averageScore}/>
-            <DisplaySuggestion/>
+            <Grid container direction="row" justify="center" alignItems="flex-start">
+               <Grid className={classes.container} item>
+                  <DisplayGraph previousData={previousData} currentData={currentData} averageScore={averageScore}/>
+                  <DisplayScoreData previousData={previousData} currentData={currentData} averageScore={averageScore}/>
+                  <DisplaySuggestion/>
+               </Grid>
+            </Grid>
          </div>
       );
    }
