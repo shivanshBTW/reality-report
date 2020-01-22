@@ -17,29 +17,29 @@ class App extends Component {
       this.state = {
          previousData: [
             [
-               {chapter: 1, score: 40},
-               {chapter: 2, score: 57},
-               {chapter: 3, score: 83},
-               {chapter: 4, score: 91}
+               {chapter: 1, score: 40,label: "Previous Test Score"},
+               {chapter: 2, score: 57,label: "Previous Test Score"},
+               {chapter: 3, score: 83,label: "Previous Test Score"},
+               {chapter: 4, score: 91,label: "Previous Test Score"}
             ],
             [
-               {chapter: 1, score: 73},
-               {chapter: 2, score: 33},
-               {chapter: 3, score: 20},
-               {chapter: 4, score: 34}
+               {chapter: 1, score: 73,label: "Previous Test Score"},
+               {chapter: 2, score: 33,label: "Previous Test Score"},
+               {chapter: 3, score: 20,label: "Previous Test Score"},
+               {chapter: 4, score: 34,label: "Previous Test Score"}
             ],
             [
-               {chapter: 1, score: 44},
-               {chapter: 2, score: 55},
-               {chapter: 3, score: 66},
-               {chapter: 4, score: 99}
+               {chapter: 1, score: 44,label: "Previous Test Score"},
+               {chapter: 2, score: 55,label: "Previous Test Score"},
+               {chapter: 3, score: 66,label: "Previous Test Score"},
+               {chapter: 4, score: 99,label: "Previous Test Score"}
             ],
          ],
          currentData: [
-            {chapter: 1, score: 78},
-            {chapter: 2, score: 22},
-            {chapter: 3, score: 46},
-            {chapter: 4, score: 33}
+            {chapter: 1, score: 78, label: "Current Score"},
+            {chapter: 2, score: 22, label: "Current Score"},
+            {chapter: 3, score: 46, label: "Current Score"},
+            {chapter: 4, score: 33, label: "Current Score"}
          ],
       };
    }
@@ -69,7 +69,8 @@ class App extends Component {
       for (let key in ans) {
          finalArray.push({
             chapter: key,
-            score: ans[key]
+            score: ans[key],
+            label: "Average Score"
          })
       }
       // console.log('finalArray',finalArray);

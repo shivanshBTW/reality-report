@@ -27,10 +27,10 @@ class DisplaySuggestion extends Component {
       }
 
       //Uncomment the next snippet to see the case where no suggestion exists
-      this.state = {
-         computerSuggestion: '',
-         coachSuggestion: ''
-      }
+      // this.state = {
+      //    computerSuggestion: '',
+      //    coachSuggestion: ''
+      // }
    }
 
    render() {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Paper, withStyles} from "@material-ui/core";
-import {VictoryAxis, VictoryChart, VictoryGroup, VictoryLine, VictoryScatter, VictoryTheme} from 'victory';
+import {VictoryAxis, VictoryChart, VictoryGroup, VictoryLine, VictoryScatter, VictoryTheme,VictoryTooltip} from 'victory';
 
 let styles = theme => ({
    root: {
@@ -57,7 +57,7 @@ class DisplayGraph extends Component {
                   // tickFormat specifies how ticks should be displayed
                   tickFormat={(x => x)}
                />
-               <VictoryGroup>
+               <VictoryGroup labels={({ datum }) => datum.title}>
                   <VictoryLine
                      style={{data: {stroke: "#c43a31"}}}
                      animate={{
@@ -69,6 +69,7 @@ class DisplayGraph extends Component {
                      x="chapter"
                      // data accessor for y values
                      y="score"
+                     labelComponent={<VictoryTooltip/>}
                   />
                   <VictoryScatter
                      style={{data: {fill: "#c43a31"}}}
@@ -76,6 +77,7 @@ class DisplayGraph extends Component {
                      data={currentData}
                      x="chapter"
                      y="score"
+                     labelComponent={<VictoryTooltip/>}
                   />
                   <VictoryLine
                      style={{data: {stroke: "blue"}}}
@@ -88,6 +90,7 @@ class DisplayGraph extends Component {
                      x="chapter"
                      // data accessor for y values
                      y="score"
+                     labelComponent={<VictoryTooltip/>}
                   />
                   <VictoryScatter
                      style={{data: {fill: "blue"}}}
@@ -95,6 +98,7 @@ class DisplayGraph extends Component {
                      data={averageScore}
                      x="chapter"
                      y="score"
+                     labelComponent={<VictoryTooltip/>}
                   />
                   <VictoryLine
                      style={{data: {stroke: "green"}}}
@@ -107,6 +111,7 @@ class DisplayGraph extends Component {
                      x="chapter"
                      // data accessor for y values
                      y="score"
+                     labelComponent={<VictoryTooltip/>}
                   />
                   <VictoryScatter
                      style={{data: {fill: "green"}}}
@@ -114,6 +119,7 @@ class DisplayGraph extends Component {
                      data={previousData[previousData.length - 1]}
                      x="chapter"
                      y="score"
+                     labelComponent={<VictoryTooltip/>}
                   />
                </VictoryGroup>
             </VictoryChart>

@@ -63,7 +63,7 @@ function DisplayScoreData(props) {
                </ListItem>
                <Collapse in={currentTestScoreOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                     {props.currentData.map((chapterScoreObj,index) => {
+                     {props.currentData.map((chapterScoreObj, index) => {
                         return (
                            <ListItem className={classNames(classes.listItem, classes.nested)} key={index}>
                               <ListItemText primary={`chapter ${chapterScoreObj.chapter}`}/>
@@ -75,6 +75,23 @@ function DisplayScoreData(props) {
                </Collapse>
                <Divider/>
 
+               <ListItem className={classes.listItem} button onClick={handlePreviousTestScoreClick} key={3}>
+                  <ListItemText primary={"Last Test's Score"}/>
+                  {previousTestScoreOpen ? <ExpandLess/> : <ExpandMore/>}
+               </ListItem>
+               <Collapse in={previousTestScoreOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                     {props.previousData[props.previousData.length - 1].map((chapterScoreObj, index) => {
+                        return (
+                           <ListItem className={classNames(classes.listItem, classes.nested)} key={index}>
+                              <ListItemText primary={`chapter ${chapterScoreObj.chapter}`}/>
+                              <Typography variant="body2">{chapterScoreObj.score}</Typography>
+                           </ListItem>
+                        )
+                     })}
+                  </List>
+               </Collapse>
+               <Divider/>
 
 
                <ListItem className={classes.listItem} button onClick={handleAverageTestScoreClick} key={2}>
@@ -83,37 +100,18 @@ function DisplayScoreData(props) {
                </ListItem>
                <Collapse in={averageTestScoreOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                     {props.currentData.map((chapterScoreObj,index) => {
+                     {props.averageScore.map((chapterScoreObj, index) => {
                         return (
                            <ListItem className={classNames(classes.listItem, classes.nested)} key={index}>
                               <ListItemText primary={`chapter ${chapterScoreObj.chapter}`}/>
-                              <Typography variant="body2">{chapterScoreObj.score}</Typography>
-                           </ListItem>
-                        )
-                     })}
-                  </List>
-               </Collapse>
-               <Divider/>
-
-
-
-               <ListItem className={classes.listItem} button onClick={handlePreviousTestScoreClick} key={3}>
-                  <ListItemText primary={"Last Test's Score"}/>
-                  {previousTestScoreOpen ? <ExpandLess/> : <ExpandMore/>}
-               </ListItem>
-               <Collapse in={previousTestScoreOpen} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                     {props.currentData.map((chapterScoreObj,index) => {
-                        return (
-                           <ListItem className={classNames(classes.listItem, classes.nested)} key={index}>
-                              <ListItemText primary={`chapter ${chapterScoreObj.chapter}`}/>
-                              <Typography variant="body2">{chapterScoreObj.score}</Typography>
+                              <Typography variant="body2">{chapterScoreObj.score.toFixed(2)}</Typography>
                            </ListItem>
                         )
                      })}
                   </List>
                </Collapse>
             </List>
+
          </div>
       </Paper>
    )
