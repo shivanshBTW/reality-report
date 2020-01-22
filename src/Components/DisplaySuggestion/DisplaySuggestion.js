@@ -19,41 +19,58 @@ let styles = theme => ({
 });
 
 class DisplaySuggestion extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            computerSuggestion: 'This part may show an auto generated suggestion',
+            coachSuggestion:'This part may show a personal feedback provided by a Coach'
+        }
+
+        //Uncomment the next snippet to see the case where no suggestion exists
+        // this.state = {
+        //     computerSuggestion: '',
+        //     coachSuggestion:''
+        // }
+    }
     render() {
         let {classes} = this.props;
         return (
-            <Paper className={classes.root} elevation={3}>
-                <ExpansionPanel>
-                    <ExpansionPanelSummary
-                       expandIcon={<ExpandMoreIcon />}
-                       aria-controls="panel1a-content"
-                       id="panel1a-header"
-                    >
-                        <Typography className={classes.heading}>Expansion Panel 1</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                            sit amet blandit leo lobortis eget.
-                        </Typography>
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
-                <ExpansionPanel>
-                    <ExpansionPanelSummary
-                       expandIcon={<ExpandMoreIcon />}
-                       aria-controls="panel2a-content"
-                       id="panel2a-header"
-                    >
-                        <Typography className={classes.heading}>Expansion Panel 2</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                            sit amet blandit leo lobortis eget.
-                        </Typography>
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
-            </Paper>
+            <div className={classes.root} elevation={3}>
+                {this.state.computerSuggestion?(
+                   <ExpansionPanel elevation={3}>
+                       <ExpansionPanelSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                       >
+                           <Typography className={classes.heading}>Computer Generated Suggestion</Typography>
+                       </ExpansionPanelSummary>
+                       <ExpansionPanelDetails>
+                           <Typography>
+                               {this.state.computerSuggestion}
+                           </Typography>
+                       </ExpansionPanelDetails>
+                   </ExpansionPanel>
+                ):''
+                }
+
+                {this.state.coachSuggestion?(
+                   <ExpansionPanel elevation={3}>
+                       <ExpansionPanelSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2a-content"
+                          id="panel2a-header"
+                       >
+                           <Typography className={classes.heading}>Suggestion from the Coach</Typography>
+                       </ExpansionPanelSummary>
+                       <ExpansionPanelDetails>
+                           <Typography>
+                               {this.state.coachSuggestion}
+                           </Typography>
+                       </ExpansionPanelDetails>
+                   </ExpansionPanel>
+                ):''}
+            </div>
         );
     }
 }
